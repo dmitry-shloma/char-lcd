@@ -1,3 +1,4 @@
-avr-gcc --std=c99 -mmcu=atmega8 -g -Os -c ./charlcd.c
-avr-gcc --std=c99 -g -mmcu=atmega8 charlcd.o ./main.c -o char-lcd.elf
+avr-gcc --std=c99 -mmcu=atmega8 -g -Os -c ./charlcd.c -o libcharlcd.o
+avr-gcc --std=c99 -g -mmcu=atmega8 libcharlcd.o ./main.c -o char-lcd.elf
 avr-objcopy -j .text -j .data -O ihex char-lcd.elf char-lcd.hex
+avrdude –c usbasp –p atmega8 –U flash:w:char-lcd.hex:i
