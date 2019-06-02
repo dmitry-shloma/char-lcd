@@ -1,4 +1,6 @@
 [Bb]uild*
+!build.sh
+!build.bat
 
 *.pro*user*
 
