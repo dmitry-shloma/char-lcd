@@ -1,11 +1,6 @@
-TEMPLATE = lib
-
-CONFIG += static
+TEMPLATE = app
 
 win32: INCLUDEPATH = "C:\Program Files (x86)\avr8-gnu-toolchain\avr\include"
 
-HEADERS = \
-    charlcd.h
-
 SOURCES = \
-    charlcd.c
+    main.c

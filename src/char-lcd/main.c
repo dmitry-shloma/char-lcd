@@ -6,7 +6,7 @@
 #include <string.h>
 #include <math.h>
 
-#include "./../char-lcd/charlcd.h"
+#include "./../libcharlcd/charlcd.h"
 
 int main()
 {
