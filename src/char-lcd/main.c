@@ -10,13 +10,13 @@
 
 int main()
 {
-    lcdInit();
-    lcdSetDisplay(LCD_DISPLAY_ON);
-    lcdSetCursor(LCD_CURSOR_OFF);
+    lcd_init();
+    lcd_set_display(LCD_DISPLAY_ON);
+    lcd_set_cursor(LCD_CURSOR_OFF);
 
     const char str[] = "Hello World!";
     while(1) {
-        lcdClear();
+        lcd_clear();
         _delay_ms(500);
         lcd_set_cursor_pos(0, 0);
         lcd_print_text(str);

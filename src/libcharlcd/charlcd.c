@@ -143,24 +143,25 @@ char lcdIsBusy(void) {
 /*
   Выполняет начальную инициализацию дисплея. Четырёхбитный режим. 
  */
-void lcdInit(void) {
-  while (lcdIsBusy());
-  lcdSendNibble(0b0010, LCD_COMMAND);
-  while (lcdIsBusy());
-  lcdRawSendByte(0b00101000, LCD_COMMAND);
-  while (lcdIsBusy());
-  lcdRawSendByte(0b00000001, LCD_COMMAND);
-  while (lcdIsBusy());
-  lcdRawSendByte(0b00000110, LCD_COMMAND);
-  while (lcdIsBusy());
-  lcdRawSendByte(0b00001100, LCD_COMMAND);
+void lcd_init(void)
+{
+    while (lcdIsBusy());
+    lcdSendNibble(0b0010, LCD_COMMAND);
+    while (lcdIsBusy());
+    lcdRawSendByte(0b00101000, LCD_COMMAND);
+    while (lcdIsBusy());
+    lcdRawSendByte(0b00000001, LCD_COMMAND);
+    while (lcdIsBusy());
+    lcdRawSendByte(0b00000110, LCD_COMMAND);
+    while (lcdIsBusy());
+    lcdRawSendByte(0b00001100, LCD_COMMAND);
 }
 
 /*
   Устанавливает режим курсора: 0 - выключен, 2 - включен, 3 - моргает.
   Если на момент запуска LCD был выключен (lcdSetDisplay), то он будет включен.
  */
-void lcdSetCursor(char cursor) {
+void lcd_set_cursor(char cursor) {
   while (lcdIsBusy());
 
   lcdRawSendByte((0b00001100 | cursor), LCD_COMMAND);
@@ -170,7 +171,7 @@ void lcdSetCursor(char cursor) {
   Включает или выключает отображение символов LCD.
   При каждом вызове выключает курсор.
  */
-void lcdSetDisplay(char state) {
+void lcd_set_display(char state) {
   while (lcdIsBusy());
 
   lcdRawSendByte((0b00001000 | state), LCD_COMMAND);
@@ -179,7 +180,7 @@ void lcdSetDisplay(char state) {
 /*
   Очищает LCD.
  */
-void lcdClear(void) {
+void lcd_clear(void) {
   while (lcdIsBusy());
 
   lcdRawSendByte(0b00000001, LCD_COMMAND);
